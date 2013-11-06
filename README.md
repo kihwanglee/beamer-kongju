@@ -8,8 +8,9 @@ which is derived from beamer-polymtl (https://github.com/mvonthron/beamer-polymt
 Introduction
 ------------
 
-This is an unofficial theme for the Korean TeX Users Group and the Korean TeX Society (http://www.ktug.org) presentations.
-This theme uses the color theme of beamer-erlangen except for the title page color. The main logo and watermark are replaced.
+This is an unofficial theme for the Korean TeX Users Group (KTUG) and the Korean TeX Society (KTS) presentations.
+This theme inherited the color theme of beamer-erlangen except for the title page color. The main logo and watermark are replaced with
+those of KTUG and KTS.
 Suggestions for alternative color themes are welcome.
 
 Installation
