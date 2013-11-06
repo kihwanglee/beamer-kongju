@@ -10,7 +10,7 @@ Introduction
 
 This is an unofficial theme for the Korean TeX Users Group (KTUG) and the Korean TeX Society (KTS) presentations.
 This theme inherited the color theme of beamer-erlangen except for the title page color. The main logo and watermark are replaced with
-those of KTUG and KTS.
+the logos of KTUG and KTS.
 Suggestions for alternative color themes are welcome.
 
 Installation
