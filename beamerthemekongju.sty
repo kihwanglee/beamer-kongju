@@ -1,0 +1,157 @@
+\ProvidesPackage{beamerthemekongju}[2013/11/01]
+\RequirePackage{tikz}
+\RequirePackage{calc}
+\RequirePackage{appendixnumberbeamer}
+
+\RequirePackage[scriptsize,it]{caption}
+\captionsetup{labelformat=empty,labelsep=none}
+
+\mode<presentation>
+
+%%% variables and options
+\def\beamer@kongju@value@true{true}
+\def\beamer@kongju@value@false{false}
+\def\beamer@kongju@value@empty{}
+
+\def\beamer@kongju@url{}
+\def\beamer@kongju@numbering{}
+\def\beamer@kongju@titlepagelayout{}
+
+\newlength{\beamer@kongju@menuwidth}
+\newlength{\beamer@kongju@restofmenuwidth}
+
+\setlength{\beamer@kongju@menuwidth}{.3\paperwidth}
+
+\DeclareOptionBeamer{url}[{www.ktug.org}]{\def\beamer@kongju@url{#1}}
+\DeclareOptionBeamer{numbering}[true]{\def\beamer@kongju@numbering{#1}}
+\DeclareOptionBeamer{titlepagelayout}[]{\def\beamer@kongju@titlepagelayout{#1}}
+\DeclareOptionBeamer{menuwidth}[]{\setlength{\beamer@kongju@menuwidth}{#1}}
+
+\ProcessOptionsBeamer
+
+\setlength{\beamer@kongju@restofmenuwidth}{0.95\paperwidth}
+\addtolength\beamer@kongju@restofmenuwidth{-\beamer@kongju@menuwidth}
+
+\useinnertheme{circles}
+\useoutertheme{miniframes}
+\usecolortheme{kongju}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{background canvas}[vertical shading][bottom=white,middle=white!15,top=gray!15]
+
+\setbeamercolor{block body}{bg=}
+
+% TITLE PAGE
+\defbeamertemplate*{title page}{titlepage}
+{
+  \thispagestyle{empty}
+
+  \begin{picture}(0,0)(0,0)
+    \put(-29,-171){\includegraphics[width=1.01\paperwidth]{images/titlepage.pdf}}
+  \end{picture}
+
+  \begin{picture}(0,0)(0,0)
+    \put(10,0){
+        \begin{minipage}{0.9\linewidth}
+        \centering{\LARGE\color{kongjuwhite} \inserttitle\par}
+        \vspace{5mm}
+        \centering{\large\color{kongjulightgrey} \insertsubtitle\par}
+        \end{minipage}
+    }
+  \end{picture}
+  \begin{picture}(0,0)(0,0)
+    \put(10,-65){
+        \begin{minipage}{0.90\linewidth}
+        \centering{\large\color{kongjuwhite} \insertauthor\par}
+        \end{minipage}
+    }
+  \end{picture}
+  \begin{picture}(0,0)(0,0)
+    \put(10,-127){
+        \begin{minipage}{0.90\linewidth}
+        \centering{\color{kongjublue} \insertinstitute\par}
+        \end{minipage}
+    }
+  \end{picture}
+
+}
+
+% HEADER
+\defbeamertemplate*{headline}{kongju}%
+{
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=1em,sep=0.3em]{headerline title}
+    \begin{minipage}{\beamer@kongju@restofmenuwidth}
+        {\tiny 한글텍사용자그룹$\cdot$한국텍학회}%
+    \end{minipage}
+    \hspace{0pt}
+    \begin{minipage}{\beamer@kongju@menuwidth}
+      \begin{flushright}
+	    \vspace{4pt}
+        \insertsectionnavigationhorizontal{\beamer@kongju@menuwidth}{}{}
+      \end{flushright}
+    \end{minipage}
+    
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[wd=\paperwidth,sep=1pt]{headerline border}
+    \vspace{1pt}
+  \end{beamercolorbox}
+}
+
+% FOOTER
+\defbeamertemplate*{footline}{kongju}
+{
+%\leavevmode%
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=1em,sep=0.2em]{footerline}
+    \insertshorttitle\;--\;\insertshortauthor \hfill %
+    \ifx\beamer@kongju@numbering\beamer@kongju@value@false\relax\else
+        \insertframenumber/\inserttotalframenumber %
+    \fi
+  \end{beamercolorbox}  
+}
+
+
+% SECTION LIST
+\usesectionheadtemplate
+{ %active
+  \color{kongjulyellow} \insertsectionhead
+}
+{ %other
+  \color{kongjulightgrey} \insertsectionhead
+}
+
+% BACKGROUND IMAGE
+\setbeamertemplate{background}{
+  \ifnum\insertframenumber=1\else
+  \parbox[r][\paperheight-.5cm]{\paperwidth-.3cm}{
+    \vfill\hfill
+    \includegraphics[width=40pt]{images/watermark.pdf}
+  }
+  \fi
+}
+
+
+\defbeamertemplate*{frametitle}{}
+{
+  \begin{beamercolorbox}[sep=0ex,ht= 2.5ex, wd=\paperwidth]{}
+    \hspace{2ex}\insertframetitle{} \hspace{1ex}\hrulefill %
+  \end{beamercolorbox}%
+}
+
+%
+\newcommand{\sectionframe}[1]
+{
+    \begin{beamercolorbox}[wd=\textwidth]{footerline}
+        \begin{minipage}{\textwidth}
+          \vspace{1em}
+          \centering\Large{\color{white}{#1}}
+          \vspace{1em}
+        \end{minipage}%
+    \end{beamercolorbox}%
+    \nointerlineskip
+    \begin{beamercolorbox}[sep=0ex,ht=2pt, wd=\textwidth]{headerline border}
+    \end{beamercolorbox}%
+}
+%\mode<handout>
+
+\mode
+<all>
