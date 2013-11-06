@@ -23,7 +23,7 @@ Clone the repository to your local texmf tree as follows:
 Usage
 -----
 
-An example file will be provided soon. Meanwhile you can start your document something like the below:
+An example file will be provided soon. Meanwhile you can start your document something like this:
 
     \documentclass{beamer}
     \usetheme[menuwidth={0.3\paperwidth}]{erlangen}
